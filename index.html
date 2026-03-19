@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tai Chi · Terminology Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:#1a1814; --ink2:#4a4740; --ink3:#8a8680;
+  --paper:#f5f2eb; --paper2:#ede9e0; --paper3:#e3dfd5;
+  --red:#8b2020; --red-light:#f0e8e8;
+  --gold:#7a5c1e; --gold-light:#f5edd8;
+  --teal:#1e5c52; --teal-light:#ddf0ec;
+  --plum:#4a1e5c; --plum-light:#eeddf5;
+  --moss:#2a4a1e; --moss-light:#e2f0dd;
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --radius:4px; --radius-lg:8px; --tr:200ms ease;
+}
+@media (prefers-color-scheme:dark) {
+  :root {
+    --ink:#e8e4db; --ink2:#b0aa9e; --ink3:#706a60;
+    --paper:#1a1814; --paper2:#221f19; --paper3:#2a2720;
+    --red:#c44040; --red-light:#2a1818;
+    --gold:#c4a040; --gold-light:#2a2010;
+    --teal:#40a090; --teal-light:#102a28;
+    --plum:#9040c4; --plum-light:#1e1028;
+    --moss:#60a040; --moss-light:#182a10;
+  }
+}
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--paper); color:var(--ink); min-height:100vh; line-height:1.6; }
+
+/* Header */
+header { padding:2.5rem 2rem 1.75rem; text-align:center; border-bottom:1px solid var(--paper3); position:relative; overflow:hidden; }
+header::before { content:'太極'; position:absolute; font-family:var(--serif); font-size:16rem; color:var(--paper2); top:-3rem; left:50%; transform:translateX(-50%); pointer-events:none; line-height:1; user-select:none; }
+.hdr-label { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink3); margin-bottom:.6rem; position:relative; }
+header h1 { font-family:var(--serif); font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:400; color:var(--ink); position:relative; margin-bottom:.4rem; }
+header p { font-size:13px; color:var(--ink3); font-style:italic; position:relative; }
+
+/* Top nav */
+.top-nav { display:flex; border-bottom:1px solid var(--paper3); max-width:960px; margin:0 auto; padding:0 1.5rem; }
+.top-tab { padding:.9rem 1.25rem; font-family:var(--sans); font-size:13px; border:none; background:transparent; cursor:pointer; color:var(--ink3); border-bottom:2px solid transparent; margin-bottom:-1px; transition:color var(--tr),border-color var(--tr); white-space:nowrap; }
+.top-tab:hover { color:var(--ink); }
+.top-tab.active { color:var(--ink); border-bottom-color:var(--red); font-weight:500; }
+
+/* Panels */
+.panel { display:none; }
+.panel.active { display:block; }
+
+/* ── Terminology ── */
+.controls { max-width:960px; margin:0 auto; padding:1.25rem 1.5rem .75rem; display:flex; flex-direction:column; gap:.85rem; }
+.search-wrap { position:relative; }
+.search-wrap svg { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--ink3); pointer-events:none; }
+#search { width:100%; padding:10px 14px 10px 42px; font-family:var(--sans); font-size:14px; background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); color:var(--ink); outline:none; transition:border-color var(--tr),box-shadow var(--tr); }
+#search::placeholder { color:var(--ink3); }
+#search:focus { border-color:var(--ink3); box-shadow:0 0 0 3px color-mix(in srgb,var(--ink3) 12%,transparent); }
+.filters { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.flbl { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3); margin-right:4px; }
+.fbtn { padding:5px 14px; font-family:var(--sans); font-size:12px; border:1px solid var(--paper3); border-radius:20px; cursor:pointer; background:transparent; color:var(--ink2); transition:all var(--tr); white-space:nowrap; }
+.fbtn:hover { border-color:var(--ink3); color:var(--ink); }
+.fbtn.active { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.fbtn.active.cm { background:var(--red); border-color:var(--red); }
+.fbtn.active.cp { background:var(--teal); border-color:var(--teal); }
+.fbtn.active.ce { background:var(--gold); border-color:var(--gold); }
+.fbtn.active.ct { background:var(--plum); border-color:var(--plum); }
+.fbtn.active.cc { background:var(--moss); border-color:var(--moss); }
+.rbar { max-width:960px; margin:0 auto; padding:.4rem 1.5rem .5rem; font-size:12px; color:var(--ink3); }
+.tgrid { max-width:960px; margin:0 auto; padding:0 1.5rem 3rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+.card { background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); padding:1.1rem 1.25rem; cursor:pointer; transition:border-color var(--tr),box-shadow var(--tr),transform var(--tr); }
+.card:hover { border-color:var(--ink3); box-shadow:0 2px 10px color-mix(in srgb,var(--ink) 7%,transparent); transform:translateY(-1px); }
+.card.open { border-color:var(--ink3); grid-column:1/-1; transform:none; }
+.card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.card-titles { flex:1; }
+.hanzi { font-family:var(--serif); font-size:1.9rem; line-height:1.15; color:var(--ink); margin-bottom:2px; }
+.pinyin { font-size:13px; font-style:italic; color:var(--ink3); margin-bottom:4px; }
+.english { font-size:14px; font-weight:500; color:var(--ink); }
+.chevron { flex-shrink:0; width:20px; height:20px; color:var(--ink3); margin-top:4px; transition:transform var(--tr); }
+.card.open .chevron { transform:rotate(180deg); }
+.tag { display:inline-block; font-size:10px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:10px; margin-top:8px; }
+.tag-movement  { background:var(--red-light);  color:var(--red); }
+.tag-principle { background:var(--teal-light); color:var(--teal); }
+.tag-energy    { background:var(--gold-light);  color:var(--gold); }
+.tag-training  { background:var(--plum-light); color:var(--plum); }
+.tag-concept   { background:var(--moss-light);  color:var(--moss); }
+.details { display:none; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--paper3); }
+.card.open .details { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:start; }
+@media(max-width:600px){ .card.open .details { grid-template-columns:1fr; } }
+.ds h3 { font-size:10px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--ink3); margin-bottom:.5rem; }
+.ds p { font-size:13.5px; color:var(--ink2); line-height:1.7; }
+.mhook { background:var(--paper3); border-left:3px solid var(--red); border-radius:0 var(--radius) var(--radius) 0; padding:.6rem .85rem; font-size:13px; font-style:italic; color:var(--ink2); line-height:1.6; }
+.related { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--paper3); }
+.related h3 { font-size:10px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--ink3); margin-bottom:.5rem; }
+.rlist { display:flex; flex-wrap:wrap; gap:6px; }
+.rchip { padding:3px 10px; font-size:12px; background:var(--paper); border:1px solid var(--paper3); border-radius:20px; cursor:pointer; color:var(--ink2); transition:all var(--tr); font-style:italic; }
+.rchip:hover { border-color:var(--ink3); color:var(--ink); }
+.empty { grid-column:1/-1; text-align:center; padding:3rem 1rem; color:var(--ink3); font-size:14px; }
+.empty .char { font-family:var(--serif); font-size:3rem; display:block; margin-bottom:.5rem; opacity:.3; }
+
+/* ═══ 24-FORM ═══ */
+.fp { max-width:960px; margin:0 auto; padding:1.5rem 1.5rem 3rem; }
+.fi { background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); padding:1rem 1.25rem; margin-bottom:1.75rem; display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
+.fi-text { flex:1; min-width:220px; }
+.fi-text h2 { font-family:var(--serif); font-size:1.1rem; font-weight:400; margin-bottom:.3rem; }
+.fi-text p { font-size:13px; color:var(--ink2); line-height:1.6; }
+.fstats { display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-start; }
+.stat { text-align:center; padding:.5rem .75rem; background:var(--paper3); border-radius:var(--radius); }
+.sn { font-family:var(--serif); font-size:1.4rem; color:var(--ink); line-height:1; }
+.sl { font-size:10px; color:var(--ink3); text-transform:uppercase; letter-spacing:.08em; margin-top:2px; }
+.mbar { display:flex; gap:8px; margin-bottom:1.25rem; align-items:center; flex-wrap:wrap; }
+.mlbl { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3); margin-right:4px; }
+.mbtn { padding:5px 14px; font-family:var(--sans); font-size:12px; border:1px solid var(--paper3); border-radius:20px; cursor:pointer; background:transparent; color:var(--ink2); transition:all var(--tr); }
+.mbtn:hover { border-color:var(--ink3); color:var(--ink); }
+.mbtn.active { background:var(--red); color:#fff; border-color:var(--red); }
+
+/* Section divider */
+.sdiv { display:flex; align-items:center; gap:12px; margin:1.5rem 0 .75rem; }
+.sdiv span { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink3); white-space:nowrap; padding:0 4px; }
+.sdiv::before,.sdiv::after { content:''; flex:1; height:1px; background:var(--paper3); }
+
+/* Sequence */
+.sequence { display:flex; flex-direction:column; }
+.sq-item { display:grid; grid-template-columns:48px 1fr; position:relative; }
+.sq-item:not(:last-child)::after { content:''; position:absolute; left:23px; top:52px; bottom:-8px; width:2px; background:var(--paper3); z-index:0; }
+.sq-nc { display:flex; flex-direction:column; align-items:center; padding-top:14px; position:relative; z-index:1; }
+.sq-n { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:500; background:var(--paper3); color:var(--ink2); border:1px solid var(--paper3); flex-shrink:0; transition:all var(--tr); }
+.sq-item.cur .sq-n { background:var(--red); color:#fff; border-color:var(--red); }
+.sq-c { background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); margin:6px 0 6px 12px; padding:.85rem 1.1rem; cursor:pointer; transition:border-color var(--tr); }
+.sq-c:hover { border-color:var(--ink3); }
+.sq-c.open { border-color:var(--ink3); }
+.sq-item.cur .sq-c { border-left:3px solid var(--red); }
+.sq-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+.sq-hz { font-family:var(--serif); font-size:1.2rem; color:var(--ink); line-height:1.2; }
+.sq-py { font-size:12px; font-style:italic; color:var(--ink3); }
+.sq-en { font-size:13px; font-weight:500; color:var(--ink); margin-top:2px; }
+.sq-chv { flex-shrink:0; color:var(--ink3); transition:transform var(--tr); margin-top:2px; }
+.sq-c.open .sq-chv { transform:rotate(180deg); }
+.sq-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
+.sq-tag { font-size:10px; padding:1px 7px; border-radius:8px; white-space:nowrap; font-weight:500; }
+.st-stance { background:var(--red-light); color:var(--red); }
+.st-dir    { background:var(--gold-light); color:var(--gold); }
+.st-grp    { background:var(--paper3); color:var(--ink3); }
+.sq-det { display:none; margin-top:.85rem; padding-top:.85rem; border-top:1px solid var(--paper3); }
+.sq-c.open .sq-det { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+@media(max-width:560px){ .sq-c.open .sq-det { grid-template-columns:1fr; } }
+.sdb h4 { font-size:10px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--ink3); margin-bottom:.4rem; }
+.sdb p { font-size:13px; color:var(--ink2); line-height:1.65; }
+.tbox { border:1px solid var(--paper3); border-radius:var(--radius); padding:.5rem .75rem; font-size:12px; color:var(--ink2); line-height:1.6; background:var(--paper); }
+.tbox strong { color:var(--ink3); font-weight:500; font-size:10px; display:block; margin-bottom:2px; letter-spacing:.06em; text-transform:uppercase; }
+.tlinks { display:flex; flex-wrap:wrap; gap:5px; margin-top:.6rem; }
+.tlink { font-size:11px; padding:2px 9px; border:1px solid var(--paper3); border-radius:12px; cursor:pointer; color:var(--ink3); transition:all var(--tr); font-style:italic; background:var(--paper); }
+.tlink:hover { border-color:var(--ink3); color:var(--ink); }
+
+/* Grid view */
+.fgrid { display:none; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+.fgrid.show { display:grid; }
+.gi { background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); padding:.75rem .85rem; cursor:pointer; text-align:center; transition:border-color var(--tr),transform var(--tr); display:flex; flex-direction:column; align-items:center; gap:3px; }
+.gi:hover { border-color:var(--ink3); transform:translateY(-1px); }
+.gi-num { font-size:10px; color:var(--ink3); }
+.gi-hz { font-family:var(--serif); font-size:1.1rem; color:var(--ink); line-height:1.2; }
+.gi-en { font-size:11px; color:var(--ink2); line-height:1.3; }
+.gi-st { font-size:10px; color:var(--red); margin-top:2px; }
+.ga { border-left:3px solid var(--gold); }
+.gb { border-left:3px solid var(--teal); }
+.gc { border-left:3px solid var(--plum); }
+.gd { border-left:3px solid var(--red); }
+.ge { border-left:3px solid var(--moss); }
+.gf { border-left:3px solid var(--ink3); }
+
+/* Study mode */
+.sw { max-width:520px; margin:0 auto; }
+.sdots { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; margin-bottom:1.25rem; }
+.sdot { width:8px; height:8px; border-radius:50%; background:var(--paper3); transition:background var(--tr); cursor:pointer; }
+.sdot.cur { background:var(--red); }
+.sdot.seen { background:var(--ink3); }
+.scard { background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); padding:2rem; text-align:center; min-height:260px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; }
+.s-num { font-size:11px; color:var(--ink3); letter-spacing:.1em; }
+.s-hz { font-family:var(--serif); font-size:2.4rem; color:var(--ink); margin:.2rem 0; }
+.s-py { font-size:14px; font-style:italic; color:var(--ink3); }
+.s-en { font-size:1rem; font-weight:500; color:var(--ink); }
+.s-rev { display:flex; flex-direction:column; gap:.5rem; align-items:center; margin-top:.5rem; width:100%; }
+.s-row { font-size:13px; color:var(--ink2); }
+.s-row em { color:var(--ink3); font-style:normal; font-size:10px; text-transform:uppercase; letter-spacing:.08em; display:block; }
+.snav { display:flex; gap:10px; margin-top:1.25rem; justify-content:center; flex-wrap:wrap; }
+.sbtn { padding:8px 20px; font-family:var(--sans); font-size:13px; border:1px solid var(--paper3); border-radius:var(--radius-lg); cursor:pointer; background:transparent; color:var(--ink2); transition:all var(--tr); }
+.sbtn:hover { border-color:var(--ink3); color:var(--ink); }
+.sbtn:disabled { opacity:.35; cursor:default; }
+.sbtn.pr { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.sbtn.pr:hover { opacity:.85; }
+
+/* ── Video links ── */
+.vid-section { margin-bottom:1.75rem; }
+.vid-section h3 { font-size:10px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--ink3); margin-bottom:.75rem; }
+.vid-links { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:8px; }
+.vid-link { display:flex; align-items:flex-start; gap:10px; background:var(--paper2); border:1px solid var(--paper3); border-radius:var(--radius-lg); padding:.75rem 1rem; text-decoration:none; transition:border-color var(--tr),transform var(--tr); }
+.vid-link:hover { border-color:var(--ink3); transform:translateY(-1px); }
+.vid-link-icon { flex-shrink:0; width:28px; height:28px; border-radius:6px; background:var(--red-light); display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.vid-link-icon svg { color:var(--red); }
+.vid-link-body { flex:1; min-width:0; }
+.vid-link-title { font-size:13px; font-weight:500; color:var(--ink); line-height:1.3; margin-bottom:2px; }
+.vid-link-sub { font-size:11px; color:var(--ink3); line-height:1.4; }
+.vid-link-tags { display:flex; gap:4px; margin-top:5px; flex-wrap:wrap; }
+.vid-tag { font-size:10px; padding:1px 6px; border-radius:8px; background:var(--paper3); color:var(--ink3); }
+
+footer { text-align:center; padding:1.25rem; font-size:12px; color:var(--ink3); border-top:1px solid var(--paper3); font-style:italic; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="hdr-label">Personal reference · 太極拳</p>
+  <h1>Tai Chi Terminology</h1>
+  <p>Concepts, principles and vocabulary for practice</p>
+</header>
+
+<div style="border-bottom:1px solid var(--paper3)">
+  <div class="top-nav">
+    <button class="top-tab active" id="tab-terms" onclick="switchPanel('terms',this)">Terminology</button>
+    <button class="top-tab" id="tab-form" onclick="switchPanel('form24',this)">24-Form sequence</button>
+  </div>
+</div>
+
+<!-- TERMINOLOGY PANEL -->
+<div id="panel-terms" class="panel active">
+  <div class="controls">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+      <input type="text" id="search" placeholder="Search in Chinese, pinyin, or English…" autocomplete="off" oninput="renderTerms()">
+    </div>
+    <div class="filters">
+      <span class="flbl">Filter:</span>
+      <button class="fbtn active" onclick="setFilter('all',this)">All</button>
+      <button class="fbtn cm" onclick="setFilter('movement',this)">Movement names</button>
+      <button class="fbtn cp" onclick="setFilter('principle',this)">Body principles</button>
+      <button class="fbtn ce" onclick="setFilter('energy',this)">Energy &amp; intent</button>
+      <button class="fbtn ct" onclick="setFilter('training',this)">Training</button>
+      <button class="fbtn cc" onclick="setFilter('concept',this)">Core concepts</button>
+    </div>
+  </div>
+  <div class="rbar" id="rbar"></div>
+  <div class="tgrid" id="tgrid"></div>
+</div>
+
+<!-- 24-FORM PANEL -->
+<div id="panel-form24" class="panel">
+  <div class="fp">
+    <div class="fi">
+      <div class="fi-text">
+        <h2>The 24-Form — Simplified Taijiquan</h2>
+        <p>Created in 1956 by the Chinese Sports Commission as an introduction to Yang-style Tai Chi. Sometimes called the Beijing form. It distils the traditional form into 24 movements covering all essential principles — taking roughly 5–6 minutes to perform.</p>
+      </div>
+      <div class="fstats">
+        <div class="stat"><div class="sn">24</div><div class="sl">Movements</div></div>
+        <div class="stat"><div class="sn">6</div><div class="sl">Groups</div></div>
+        <div class="stat"><div class="sn">~6</div><div class="sl">Minutes</div></div>
+      </div>
+    </div>
+
+    <!-- Video section -->
+    <div class="vid-section">
+      <h3>Video reference — opens in YouTube</h3>
+      <div class="vid-links" id="vid-links"></div>
+    </div>
+
+    <div class="mbar">
+      <span class="mlbl">View:</span>
+      <button class="mbtn active" id="btn-seq" onclick="setMode('sequence',this)">Sequence</button>
+      <button class="mbtn" id="btn-grid" onclick="setMode('grid',this)">Overview grid</button>
+      <button class="mbtn" id="btn-study" onclick="setMode('study',this)">Study cards</button>
+    </div>
+
+    <div id="view-sequence"><div class="sequence" id="seq-list"></div></div>
+    <div id="view-grid" style="display:none"><div class="fgrid show" id="fgrid"></div></div>
+    <div id="view-study" style="display:none">
+      <div class="sw">
+        <div class="sdots" id="sdots"></div>
+        <div class="scard" id="scard"></div>
+        <div class="snav" id="snav"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>A living reference — add to it as your practice grows.</footer>
+
+<script>
+// ── TERMS DATA ──
+const TERMS = [
+  {hanzi:'太極拳',pinyin:'Tàijíquán',english:'Tai Chi Chuan · The art itself',category:'concept',
+   desc:'The full name of the art. Literally "Supreme Ultimate Fist" — a martial art grounded in the Taoist concept of taiji, the interplay of yin and yang from which all things arise.',
+   etymology:'Tài 太 = supreme/great · Jí 極 = ultimate/extreme · Quán 拳 = fist/boxing.',
+   hook:'The art that embodies the supreme ultimate — balance of opposites, expressed in movement.',related:['太極','陰陽','套路']},
+  {hanzi:'太極',pinyin:'Tàijí',english:'Supreme Ultimate',category:'concept',
+   desc:'The philosophical foundation: the dynamic interplay of yin and yang. In practice, every movement contains both expansion and contraction, hard and soft, full and empty.',
+   etymology:'From Taoist cosmology: from Wú Jí 無極 (formless nothingness) arises Tàijí, which generates the two forces, which generate the 10,000 things.',
+   hook:'Every movement has a taiji in it: as one arm extends (yang), the other withdraws (yin).',related:['陰陽','無極','氣']},
+  {hanzi:'陰陽',pinyin:'Yīn Yáng',english:'Yin and Yang',category:'concept',
+   desc:'The two complementary forces at the heart of Tai Chi. Yin: soft, yielding, contracting, sinking, empty. Yang: firm, expanding, rising, full. Weight shifts from full (yang) leg to empty (yin) leg.',
+   etymology:'Yīn 陰 = shady side of a hill. Yáng 陽 = sunny side.',
+   hook:'When weight is on the left foot, left is yang (full), right is yin (empty). Feeling this clearly is the beginning.',related:['虛實','太極','開合']},
+  {hanzi:'無極',pinyin:'Wújí',english:'Formless · Before movement',category:'concept',
+   desc:'The state before taiji — stillness, no differentiation yet. In practice, the moment of standing before the form begins: utterly still, balanced, present.',
+   etymology:'Wú 無 = nothing · Jí 極 = extreme. The state of having no pole, no differentiation.',
+   hook:'Those few seconds of stillness before you begin the form are wu ji. Not empty waiting — full readiness.',related:['太極','站樁']},
+  {hanzi:'道',pinyin:'Dào',english:'The Way · The Tao',category:'concept',
+   desc:'The underlying principle of the universe in Taoist philosophy. Tai Chi is sometimes called a moving meditation on the Tao.',
+   etymology:'Originally pictured as a head leading a road — the way things naturally move.',
+   hook:'"The Tao that can be named is not the eternal Tao." In Tai Chi, it is felt before it is understood.',related:['自然','太極']},
+  {hanzi:'野馬分鬃',pinyin:'Yěmǎ fēn zōng',english:'Part the Wild Horse\'s Mane',category:'movement',
+   desc:'A flowing diagonal step forward with one arm stroking upward-outward while the other drops. Appears multiple times in Yang style. Teaches weight transfer, waist rotation, and open/close rhythm.',
+   etymology:'Yěmǎ 野馬 = wild horse · Fēn 分 = part/divide · Zōng 鬃 = mane.',
+   hook:'Imagine your hands sliding through thick, long hair — smooth and uninterrupted, no sudden breaks.',related:['開合','虛實','弓步']},
+  {hanzi:'白鶴亮翅',pinyin:'Bái hè liàng chì',english:'White Crane Spreads Its Wings',category:'movement',
+   desc:'One hand lifts to face height while the other sinks to the hip. The body opens like a crane extending its wings — a moment of expansion and balance on one weighted leg.',
+   etymology:'Bái 白 = white · Hè 鶴 = crane · Liàng 亮 = display · Chì 翅 = wings.',
+   hook:'Feel the expansion from centre outward in both directions simultaneously — one hand rises as the other falls.',related:['中正','開合','虛實']},
+  {hanzi:'雲手',pinyin:'Yún shǒu',english:'Cloud Hands',category:'movement',
+   desc:'Circular, wave-like arm movements while stepping sideways. Develops waist-driven whole-body coordination.',
+   etymology:'Yún 雲 = cloud · Shǒu 手 = hands.',
+   hook:'Let the waist drive the hands. If you watch only the hands, you are doing it with arms.',related:['開合','陰陽','腰']},
+  {hanzi:'攬雀尾',pinyin:'Lǎn què wěi',english:'Grasp the Sparrow\'s Tail',category:'movement',
+   desc:'A foundational sequence containing the four primary energies: péng (ward-off), lǚ (roll-back), jǐ (press), and àn (push). Often called the core of the entire form.',
+   etymology:'Lǎn 攬 = to grasp · Què 雀 = sparrow · Wěi 尾 = tail.',
+   hook:'This is the grammar of Tai Chi — learn these four movements deeply and the rest of the art opens up.',related:['棚','履','擠','按','推手']},
+  {hanzi:'單鞭',pinyin:'Dān biān',english:'Single Whip',category:'movement',
+   desc:'One hand forms a hook and extends to one side while the other palm pushes forward across a deep bow stance. One of the most recognisable postures.',
+   etymology:'Dān 單 = single · Biān 鞭 = whip.',
+   hook:'The whip hand is not decorative — it protects the wrist and directs force. Feel the body opening like a door on a hinge at the waist.',related:['中正','弓步','虛實']},
+  {hanzi:'金雞獨立',pinyin:'Jīn jī dú lì',english:'Golden Rooster Stands on One Leg',category:'movement',
+   desc:'One knee lifts high while the same-side arm rises; the standing leg is rooted. Tests root, central equilibrium, and the connection between sinking and rising.',
+   etymology:'Jīnjī 金雞 = golden rooster · Dú 獨 = alone/single · Lì 立 = to stand.',
+   hook:'The rise of the knee and arm is only possible because the standing foot is truly rooted. Sink to rise.',related:['根','中正','沉']},
+  {hanzi:'弓步',pinyin:'Gōng bù',english:'Bow stance',category:'movement',
+   desc:'The most common stance: forward leg bent at the knee, back leg straight and turned outward 45°. Weight approximately 70% front, 30% back.',
+   etymology:'Gōng 弓 = bow (the weapon) · Bù 步 = step/stance.',
+   hook:'The front knee must not extend past the toes. Sink the hip.',related:['虛實','沉','根','野馬分鬃']},
+  {hanzi:'馬步',pinyin:'Mǎ bù',english:'Horse stance',category:'movement',
+   desc:'Feet parallel, shoulder-width or wider, knees bent as if sitting on a horse. Develops root, leg strength, and sinking.',
+   etymology:'Mǎ 馬 = horse · Bù 步 = step/stance.',
+   hook:'Imagine sitting on a horse\'s back. Weight drops through the seat; knees do not collapse inward.',related:['沉','根','站樁']},
+  {hanzi:'鬆',pinyin:'Sōng',english:'Relax · Release · Loosen',category:'principle',
+   desc:'The single most important instruction in Tai Chi. Not limp, but actively released — joints open, muscles soft, the body available to respond.',
+   etymology:'Contains the wood radical (木) — like a tree in wind, supple without breaking.',
+   hook:'"Sōng the shoulders" means let them drop and widen. Notice where you carry tension; that is where you start.',related:['沉','根','氣']},
+  {hanzi:'沉',pinyin:'Chén',english:'Sink · Settle',category:'principle',
+   desc:'To let weight settle downward — into the ground, into the lower body. The opposite of floating or tensing upward.',
+   etymology:'Water radical (氵). Water always finds the lowest point.',
+   hook:'At the end of each movement, pause and feel your weight drop. That settling is chén.',related:['鬆','根','丹田']},
+  {hanzi:'根',pinyin:'Gēn',english:'Root',category:'principle',
+   desc:'The connection to the ground — the sense that the feet are rooted and cannot be uprooted. Developed through sōng and chén.',
+   etymology:'Literally the root of a plant (木). What holds a tree in place in a storm.',
+   hook:'Press the ball of the foot and heel lightly into the floor. Imagine roots growing downward.',related:['沉','鬆','中正']},
+  {hanzi:'中正',pinyin:'Zhōngzhèng',english:'Central equilibrium',category:'principle',
+   desc:'The body\'s central alignment — upright but not stiff, the spine erect as if suspended from above. The axis is stable even as the limbs move.',
+   etymology:'Zhōng 中 = centre/middle · Zhèng 正 = correct/upright.',
+   hook:'Imagine a fine thread attached to the crown of your head, gently lifting. That elongation without tension is zhōngzhèng.',related:['根','鬆','沉']},
+  {hanzi:'虛實',pinyin:'Xū Shí',english:'Empty and Full',category:'principle',
+   desc:'The constant distinction between the weight-bearing leg (full/shí) and the free leg (empty/xū). Confusion between the two is a fundamental error.',
+   etymology:'Xū 虛 = void/empty · Shí 實 = solid/full/real.',
+   hook:'Before each step, check: is your weight fully on one foot? If not, transfer it first.',related:['陰陽','沉','根']},
+  {hanzi:'開合',pinyin:'Kāi Hé',english:'Open and Close',category:'principle',
+   desc:'The expansion and contraction present in every movement. As hands extend (kāi), the body expands. As they gather (hé), the body contracts.',
+   etymology:'Kāi 開 = open · Hé 合 = close/join.',
+   hook:'Try to feel the whole body opening as arms expand and closing as they gather. Even the skin participates.',related:['陰陽','太極','丹田']},
+  {hanzi:'腰',pinyin:'Yāo',english:'Waist · The command centre',category:'principle',
+   desc:'The waist is the ruler of the whole body. All movement originates from the turn of the waist; the arms follow.',
+   etymology:'腰 = waist, also the lumbar region.',
+   hook:'Place hands on hips, practise a movement using only the waist turn — let the arms hang and follow passively.',related:['丹田','勁','鬆']},
+  {hanzi:'自然',pinyin:'Zìrán',english:'Natural · Naturalness',category:'principle',
+   desc:'The quality everything moves toward in mature practice. Not forced, not performed — movement that arises from principle without effort.',
+   etymology:'Zì 自 = self · Rán 然 = thus/so. "Of itself, so."',
+   hook:'When you stop trying to look like Tai Chi and simply let the principles organise your body, zìrán emerges.',related:['道','鬆','氣']},
+  {hanzi:'氣',pinyin:'Qì',english:'Vital energy · Life force',category:'energy',
+   desc:'The internal energy that Tai Chi cultivates. Felt as warmth, tingling, or fullness in the limbs, especially after sinking the breath into the dantian.',
+   etymology:'Ancient pictograph: steam rising from rice cooking — vapour, breath, vital energy.',
+   hook:'Notice warmth in your palms after 10 minutes of practice. That sensation is often the first felt expression of qì.',related:['丹田','意','勁']},
+  {hanzi:'勁',pinyin:'Jìn',english:'Internal strength · Trained force',category:'energy',
+   desc:'Distinct from brute muscular force (lì 力). The refined, whole-body force that emerges from correct alignment, relaxation, and intention.',
+   etymology:'Written with strength (力) and the idea of tendons — strength that flows through the body like a connected chain.',
+   hook:'Muscular force feels local. Jìn feels whole — the ground rises through your body and into your hand.',related:['氣','意','棚','聽勁']},
+  {hanzi:'意',pinyin:'Yì',english:'Intention · Mind-intent',category:'energy',
+   desc:'Where the mind leads, qì follows. Yì is the mental intention that directs movement. Before your hand moves, your intention arrives there.',
+   etymology:'Heart/mind (心) below the character for sound (音) — intention as the sound of the heart.',
+   hook:'Before extending your arm, imagine your fingertips reaching toward a distant point. The mind arriving before the body is yì in practice.',related:['氣','勁','丹田']},
+  {hanzi:'丹田',pinyin:'Dāntián',english:'Elixir field · Energy centre',category:'energy',
+   desc:'The primary energy centre in the lower abdomen, three finger-widths below the navel. The centre of gravity and source of whole-body power.',
+   etymology:'Dān 丹 = elixir/cinnabar · Tián 田 = field. From Taoist internal alchemy.',
+   hook:'Place a hand on your lower belly and breathe so it rises on the inhale. That movement is connecting to the dantian.',related:['氣','沉','開合','腰']},
+  {hanzi:'棚',pinyin:'Péng',english:'Ward-off · Expand',category:'energy',
+   desc:'The first of the eight gates. An outwardly expanding, buoyant force — like a ball of air inside the arm that cannot be compressed.',
+   etymology:'The character for an awning or canopy — something that expands outward.',
+   hook:'Hold your arm as if carrying a large beach ball. That rounded, outward structure is péng jìn.',related:['勁','履','擠','按','攬雀尾']},
+  {hanzi:'履',pinyin:'Lǚ',english:'Roll-back · Yield',category:'energy',
+   desc:'The yielding, deflecting energy — receiving an incoming force and redirecting it past you. The principle of not meeting force with force.',
+   etymology:'Related to shoe/tread — the idea of giving way underfoot.',
+   hook:'When someone pushes your arm, let it move slightly while turning your waist. The force finds nothing to push against.',related:['棚','擠','按','聽勁']},
+  {hanzi:'擠',pinyin:'Jǐ',english:'Press · Squeeze',category:'energy',
+   desc:'A compact, direct force — pressing with both hands aligned. A focused energy that concentrates into one point.',
+   etymology:'Hand radical (扌) — pressing together.',
+   hook:'In Grasp the Sparrow\'s Tail, the forward press with both hands aligned is jǐ — compact and direct.',related:['棚','履','按','攬雀尾']},
+  {hanzi:'按',pinyin:'Àn',english:'Push · Press down and forward',category:'energy',
+   desc:'A downward-and-forward pushing energy using both palms. Initiated from the legs and waist, flowing through the arms into the hands.',
+   etymology:'Hand radical (扌) + resting/pressing down.',
+   hook:'Sink slightly before extending the arms — the power comes from the legs and waist, not the shoulders.',related:['棚','履','擠','攬雀尾']},
+  {hanzi:'聽勁',pinyin:'Tīng jìn',english:'Listening energy',category:'energy',
+   desc:'The sensitivity to feel another person\'s force, intention, and centre through physical contact. Developed through pushing hands.',
+   etymology:'Tīng 聽 = to listen · Jìn 勁 = trained force. Listening with the hands.',
+   hook:'In pushing hands, soften your arms and simply feel what your partner\'s arms are doing. Do not try to do anything yet.',related:['推手','勁','履']},
+  {hanzi:'套路',pinyin:'Tàolù',english:'Form · Routine',category:'training',
+   desc:'The sequence of connected movements practised solo. The form is a moving library of principles and applications.',
+   etymology:'Tào 套 = set/sequence · Lù 路 = path/road.',
+   hook:'The form is a moving meditation with martial meaning encoded in every posture. Knowing the meaning changes how you practise.',related:['推手','站樁','野馬分鬃']},
+  {hanzi:'推手',pinyin:'Tuīshǒu',english:'Pushing Hands',category:'training',
+   desc:'Two-person practice where partners maintain contact and explore applying the principles — yielding, adhering, sensing force. The bridge between solo form and application.',
+   etymology:'Tuī 推 = push · Shǒu 手 = hands.',
+   hook:'Pushing hands teaches you to listen (tīng jìn) — to feel the partner\'s intention through contact before they move visibly.',related:['聽勁','履','棚','攬雀尾']},
+  {hanzi:'站樁',pinyin:'Zhàn zhuāng',english:'Standing post · Standing meditation',category:'training',
+   desc:'Standing still in a posture — arms held as if embracing a tree — for extended periods. Develops root, sōng, structural alignment, and qì cultivation.',
+   etymology:'Zhàn 站 = to stand · Zhuāng 樁 = post/stake/pile.',
+   hook:'Even 5 minutes of standing with arms rounded at chest height, focused on relaxing and sinking, will transform your form practice.',related:['根','沉','鬆','氣']},
+  {hanzi:'楊式',pinyin:'Yáng shì',english:'Yang style',category:'training',
+   desc:'The most widely practised family style, developed by Yang Luchan (1799–1872). The 24-form most people learn is Yang style.',
+   etymology:'Named after the Yang family. Shì 式 = style/method.',
+   hook:'If you have seen Tai Chi in a park, it was almost certainly Yang style.',related:['陳式','套路','太極拳']},
+  {hanzi:'陳式',pinyin:'Chén shì',english:'Chen style',category:'training',
+   desc:'The oldest surviving family style, from which all others derive. Characterised by alternating slow and explosive movements, spiral-force techniques, and low stances.',
+   etymology:'Named after the Chen family of Chenjiagou village, Henan province.',
+   hook:'The explosive bursts in Chen style make the martial roots of Tai Chi unmistakeable.',related:['楊式','套路','勁']},
+  {hanzi:'太極拳經',pinyin:'Tàijíquán jīng',english:'Tai Chi Classics',category:'training',
+   desc:'The classical texts forming the theoretical foundation — attributed to Zhang Sanfeng and Wang Zongyue. Short texts describing principles of movement, force, and strategy.',
+   etymology:'Jīng 經 = classic/scripture.',
+   hook:'"Use four ounces to deflect a thousand pounds." That line from the Classics describes lǚ done correctly.',related:['太極拳','勁','意']},
+];
+
+// ── 24-FORM DATA ──
+const GROUPS = {
+  a:'Opening — establishing root and rhythm',
+  b:'Building — introducing all four energies',
+  c:'Expanding — cloud hands and balance',
+  d:'Testing — kicks and low postures',
+  e:'Deepening — corners, needle and flash',
+  f:'Returning — completion and closing',
+};
+
+const FORM24 = [
+  {n:1,hanzi:'起勢',pinyin:'Qǐ shì',english:'Commencing Form',
+   group:'a',stance:'Standing, feet parallel',dir:'South',
+   desc:'Begin in wu ji — feet parallel, arms hanging, complete stillness. The arms float slowly upward to shoulder height and sink back down as the knees gently bend. The intention precedes every micro-movement. This is the formal opening of the form.',
+   transition:'Stand with feet together. Step left foot out to shoulder width. Pause in wu ji before beginning the arm rise.',
+   into:'Weight settles equally on both feet. Arms sink. Begin to shift weight right to gather for movement 2.',
+   principles:['無極','鬆','沉','意']},
+  {n:2,hanzi:'左右野馬分鬃',pinyin:'Zuǒyòu yěmǎ fēn zōng',english:'Part the Wild Horse\'s Mane (L & R)',
+   group:'a',stance:'Bow stance 弓步',dir:'South then East',
+   desc:'Three repetitions alternating left and right. Each repetition: weight shifts back, arms gather at the waist as if holding a ball (one arm on top, one below), then step diagonally forward into bow stance as the arms open — the upper arm rising to face height, the lower pressing down. The waist drives every opening.',
+   transition:'Shift weight right. Gather arms to right side (right arm on top). Step left foot diagonally forward-left into left bow stance. Arms open as stance settles.',
+   into:'After the third repetition (right bow stance, facing east), shift weight back to begin white crane.',
+   principles:['弓步','虛實','開合','腰']},
+  {n:3,hanzi:'白鶴亮翅',pinyin:'Bái hè liàng chì',english:'White Crane Spreads Its Wings',
+   group:'a',stance:'Empty stance 虛步',dir:'East',
+   desc:'From the bow stance, the left foot draws back to an empty stance with the toe touching lightly. Simultaneously the right hand arcs upward to face height while the left hand presses down to hip level. The body rises slightly and opens. A moment of stillness at full extension.',
+   transition:'From left bow stance. Turn torso right, weight shifts fully to right leg. Left foot draws back to empty toe-touch. Right hand rises, left hand sinks.',
+   into:'Left foot steps forward to begin brush knee for movement 4.',
+   principles:['虛實','中正','開合']},
+  {n:4,hanzi:'左右摟膝拗步',pinyin:'Zuǒyòu lōu xī ào bù',english:'Brush Knee and Twist Step (L & R)',
+   group:'a',stance:'Bow stance 弓步',dir:'East',
+   desc:'Three repetitions. The lead hand brushes across the knee (deflecting a low attack) as the rear hand pushes forward from the ear. The waist drives the push — the arm arrives at full extension only as the bow stance settles. One of the most important movements for learning the waist-hand connection.',
+   transition:'From white crane. Left foot steps forward. Right hand circles back to ear level. Left hand brushes across left knee. Bow stance settles. Right palm pushes forward.',
+   into:'After third repetition (right bow stance), weight shifts back, hands gather to begin playing the lute.',
+   principles:['弓步','腰','意','鬆']},
+  {n:5,hanzi:'手揮琵琶',pinyin:'Shǒu huī pípá',english:'Playing the Lute',
+   group:'b',stance:'Empty stance 虛步',dir:'East',
+   desc:'A refined neutralising posture. Step forward to gather, then settle back into empty stance as both arms adjust into an arc — left hand rising to chest height, right hand behind it, as if cradling a lute. Weight sits 70% on the rear leg, 30% on the forward toe.',
+   transition:'From right bow stance. Right foot steps up behind left heel. Weight shifts back to right leg. Left foot lifts to heel-touch. Arms form the lute shape — left forward, right behind.',
+   into:'Left foot steps forward and begin brush knee again for movement 6.',
+   principles:['虛實','沉','中正']},
+  {n:6,hanzi:'左右倒捲肱',pinyin:'Zuǒyòu dào juǎn gōng',english:'Step Back and Whirl Arms (L & R)',
+   group:'b',stance:'Retreating empty stance',dir:'East (stepping backward)',
+   desc:'Four repetitions stepping backward. One of the few retreating sequences — weight steps back while the arms alternate: one hand pushes forward at shoulder height, the other withdraws past the ear. The waist turns with each step. Requires careful coordination to avoid crossing the feet.',
+   transition:'From playing the lute. Right arm circles back and up, left palm faces forward. Step right foot back. Weight shifts back to right. Repeat alternating sides.',
+   into:'After four steps back, pivot to transition into left grasp the sparrow\'s tail.',
+   principles:['虛實','腰','履']},
+  {n:7,hanzi:'左攬雀尾',pinyin:'Zuǒ lǎn què wěi',english:'Left Grasp the Sparrow\'s Tail',
+   group:'b',stance:'Bow stance 弓步',dir:'East',
+   desc:'The four energies in sequence on the left side: péng (ward-off) — left arm curves outward in a rounded block. Lǚ (roll-back) — turn right, drawing the arms back and down. Jǐ (press) — turn back left, both hands pressing forward. Àn (push) — draw back and push forward with both palms.',
+   transition:'Step left foot forward-left into left bow stance. Left arm wards off (péng). Then roll-back (lǚ), press (jǐ), push (àn).',
+   into:'After àn, shift weight back into empty stance. Pivot on left heel to face west. Transition into single whip.',
+   principles:['棚','履','擠','按','腰']},
+  {n:8,hanzi:'單鞭',pinyin:'Dān biān',english:'Single Whip',
+   group:'b',stance:'Bow stance 弓步',dir:'West',
+   desc:'From grasp the sparrow\'s tail, the body pivots as the right hand forms a hook and extends fully to the east. The left foot steps out to the left and the left palm pushes out at face height as the bow stance settles. The body opens wide — almost a T-shape viewed from above.',
+   transition:'Pivot left on right heel. Right hand forms hook and reaches east. Step left foot out west. Left palm pushes west-forward. Settle into left bow stance.',
+   into:'Hands gather inward. Right foot steps up for cloud hands.',
+   principles:['單鞭','弓步','開合','中正']},
+  {n:9,hanzi:'雲手',pinyin:'Yún shǒu',english:'Cloud Hands',
+   group:'c',stance:'Side-step parallel stance',dir:'South (moving right to left)',
+   desc:'Three repetitions moving sideways. The arms make large horizontal circles in opposite phase — as one rises across the body, the other descends. The feet step sideways in a narrow parallel stance. The waist must drive every arc; if it doesn\'t, the arms become mere windmills.',
+   transition:'From single whip. Right foot steps in parallel. Right hand descends as left hand rises. Begin stepping left.',
+   into:'After third repetition, hook the right hand and step out into single whip.',
+   principles:['雲手','腰','開合','虛實']},
+  {n:10,hanzi:'單鞭',pinyin:'Dān biān',english:'Single Whip (2nd)',
+   group:'c',stance:'Bow stance 弓步',dir:'West',
+   desc:'Identical to movement 8 but following cloud hands. The broad opening after the compact sideways travel creates a satisfying contrast. By this point single whip should feel like a returning home.',
+   transition:'From cloud hands. Right hand forms hook, extends east. Step left foot out, left palm pushes west, settle into left bow stance.',
+   into:'Left hand turns over, arms gather. Right foot steps up for high pat on horse.',
+   principles:['單鞭','開合']},
+  {n:11,hanzi:'高探馬',pinyin:'Gāo tàn mǎ',english:'High Pat on Horse',
+   group:'c',stance:'Empty stance 虛步',dir:'West',
+   desc:'Step forward, then settle back. Right hand extends forward at face height, palm down, as if patting a horse\'s head. Left hand withdraws to hip. Left foot settles as an empty stance. A transition and a moment of stillness before the kick sequence begins.',
+   transition:'From single whip. Right foot steps up beside left. Weight to right. Left foot lifts to empty toe-touch. Right hand pushes forward, left hand withdraws.',
+   into:'Left foot kicks forward for right heel kick.',
+   principles:['虛實','沉','意']},
+  {n:12,hanzi:'右蹬腳',pinyin:'Yòu dēng jiǎo',english:'Kick with Right Heel',
+   group:'c',stance:'Single-leg balance',dir:'Northwest',
+   desc:'Balance on the left leg. Both hands open outward to the sides at chest height as the right foot kicks out — heel leading — to the northwest. The arms and leg reach in opposition. Root and central equilibrium are fully exposed here; any imbalance is immediately visible.',
+   transition:'From high pat on horse. Bring both hands together in front (cross wrists). Lift right knee. Extend right heel to northwest. Arms open to the sides.',
+   into:'Step right foot down forward-right. Pivot to face east. Cross hands for left kick.',
+   principles:['根','中正','虛實']},
+  {n:13,hanzi:'雙峰貫耳',pinyin:'Shuāng fēng guàn ěr',english:'Strike Opponent\'s Ears with Both Fists',
+   group:'d',stance:'Bow stance 弓步',dir:'East',
+   desc:'Both hands clench into fists and swing upward and inward in arcs to both sides of an imaginary opponent\'s head — like striking both ears simultaneously. The bow stance settles as the fists arrive at ear height. A moment of gathering jìn before release.',
+   transition:'Step right foot down. Step left foot forward-left. Hands open, drop to hips, form fists and arc forward-upward to ear height as the left bow stance settles.',
+   into:'Shift weight back, fists open. Prepare for left heel kick.',
+   principles:['勁','弓步','意']},
+  {n:14,hanzi:'左蹬腳',pinyin:'Zuǒ dēng jiǎo',english:'Kick with Left Heel',
+   group:'d',stance:'Single-leg balance',dir:'Southeast',
+   desc:'Mirror of movement 12 — balance on the right leg, left heel kicks to the southeast, arms open to the sides. The sequence of right kick, fist strike, left kick creates a triangle of directions that tests orientation within the form.',
+   transition:'Shift weight fully to right leg. Cross wrists. Lift left knee. Extend left heel to southeast. Arms open.',
+   into:'Step left foot down. Pivot right. Step right foot forward for snake creeps down.',
+   principles:['根','中正','虛實']},
+  {n:15,hanzi:'左下勢獨立',pinyin:'Zuǒ xià shì dú lì',english:'Snake Creeps Down & Golden Rooster (Left)',
+   group:'d',stance:'Low crouch → single-leg balance 獨立',dir:'West',
+   desc:'Two movements as one: first, sink low into a full crouch (snake creeps down) — right leg fully bent, left leg extending low along the ground, left hand trailing along the inner left leg toward the foot. Then rise immediately onto the right leg as the left knee lifts high and the left arm rises — golden rooster.',
+   transition:'Right foot steps back-right. Body sinks low. Left leg extends low-left. Left hand trails inward along the left leg.',
+   into:'Rise up — left knee lifts, left arm rises. Hold golden rooster position briefly. Step left foot down.',
+   principles:['金雞獨立','根','沉','虛實']},
+  {n:16,hanzi:'右下勢獨立',pinyin:'Yòu xià shì dú lì',english:'Snake Creeps Down & Golden Rooster (Right)',
+   group:'d',stance:'Low crouch → single-leg balance 獨立',dir:'East',
+   desc:'Mirror of movement 15 on the right side. After the left golden rooster, pivot and sink into the right-side snake creeps down, then rise into right golden rooster. The consecutive sink-and-rise pair is one of the most physically demanding sequences in the form.',
+   transition:'Left foot steps forward-left. Pivot right. Body sinks low. Right leg extends low-right. Right hand trails along the right leg.',
+   into:'Rise up — right knee lifts, right arm rises. Hold. Step right foot down for fair lady.',
+   principles:['金雞獨立','根','沉']},
+  {n:17,hanzi:'左右穿梭',pinyin:'Zuǒyòu chuān suō',english:'Fair Lady Works the Shuttles (L & R)',
+   group:'e',stance:'Bow stance 弓步',dir:'NE then NW',
+   desc:'Two repetitions facing northeast then northwest — the only movements in the 24-form directed to the diagonal corners. One arm rises overhead as a block while the other pushes forward in a bow stance. The overhead arm feels like lifting a shelf while the forward arm pushes.',
+   transition:'From right golden rooster. Step left foot northeast. Left arm rises to block overhead. Right palm pushes forward. Settle into left bow stance.',
+   into:'Shift weight back. Pivot. Step right foot northwest. Repeat on right side.',
+   principles:['弓步','棚','按','中正']},
+  {n:18,hanzi:'海底針',pinyin:'Hǎidǐ zhēn',english:'Needle at Sea Bottom',
+   group:'e',stance:'Empty stance 虛步',dir:'South',
+   desc:'Step forward then immediately sink. The right hand plunges steeply downward — fingertips pointing toward the floor — as the left hand guards at shoulder height. The body bows forward from the waist while maintaining central equilibrium. A deep, probing movement.',
+   transition:'From fair lady. Step right foot forward. Weight shifts to right. Left foot draws to empty toe-touch. Right hand sinks steeply downward. Left hand guards at shoulder.',
+   into:'Rise up, both hands lift. Step forward into flash the arm.',
+   principles:['沉','中正','意']},
+  {n:19,hanzi:'閃通臂',pinyin:'Shǎn tōng bì',english:'Flash the Arm',
+   group:'e',stance:'Bow stance 弓步',dir:'South',
+   desc:'Immediately following needle at sea bottom — rise from the low posture, left hand pushes forward at shoulder height while the right hand rises overhead as a guard. The bow stance settles as the arms reach full extension. A sudden expansion after the deep sink.',
+   transition:'Rise from needle. Step left foot forward into left bow stance. Left palm pushes forward. Right arm rises to guard overhead.',
+   into:'Shift weight back. Pivot right on left heel. Step right foot out for right grasp the sparrow\'s tail.',
+   principles:['開合','棚','按','腰']},
+  {n:20,hanzi:'右攬雀尾',pinyin:'Yòu lǎn què wěi',english:'Right Grasp the Sparrow\'s Tail',
+   group:'e',stance:'Bow stance 弓步',dir:'North',
+   desc:'The four energies again — this time on the right side, facing north. Right arm wards off, roll-back left, press forward right, push with both palms. The right-side repetition reinforces balance between the two sides and returns the practitioner to a solid foundation before the closing movements.',
+   transition:'Pivot to face north. Step right foot forward into right bow stance. Right arm péng. Then lǚ, jǐ, àn.',
+   into:'After àn, shift back to empty stance. Pivot right on right heel for final single whip.',
+   principles:['棚','履','擠','按','腰']},
+  {n:21,hanzi:'單鞭',pinyin:'Dān biān',english:'Single Whip (3rd)',
+   group:'f',stance:'Bow stance 弓步',dir:'West',
+   desc:'The third and final single whip — now facing west, grounding the form before the closing movements. Each time single whip reappears it feels like a returning landmark. By now the body has turned to face all four cardinal directions and both diagonals.',
+   transition:'Pivot left. Right hand forms hook and extends east. Step left foot out. Left palm pushes west. Settle into left bow stance.',
+   into:'Left hand turns over. Arms gather. Right foot draws in for cloud hands.',
+   principles:['單鞭','中正','開合']},
+  {n:22,hanzi:'雲手',pinyin:'Yún shǒu',english:'Cloud Hands (2nd)',
+   group:'f',stance:'Side-step parallel stance',dir:'South (moving right to left)',
+   desc:'Three more repetitions of cloud hands following the final single whip. By this point in the form the waist should be noticeably more fluid than in movement 9 — the body has been thoroughly warmed and opened.',
+   transition:'From single whip. Right foot steps in, parallel stance. Begin cloud hands stepping right to left.',
+   into:'After third repetition, hook right hand, step out left for snake creeps down.',
+   principles:['雲手','腰','開合']},
+  {n:23,hanzi:'單鞭下勢',pinyin:'Dān biān xià shì',english:'Single Whip into Snake Creeps Down',
+   group:'f',stance:'Low crouch',dir:'West',
+   desc:'From single whip, instead of settling upright, continue sinking — the right hook hand holds its position while the body lowers into the full crouch, left hand trailing down the left leg toward the ankle. A combination of single whip and snake creeps down folded into one sustained descent.',
+   transition:'From cloud hands. Form hook, step out left, push left palm — single whip — then immediately continue sinking low, left hand trails down the left leg.',
+   into:'Rise up and step forward for step forward to seven stars.',
+   principles:['沉','鬆','腰','虛實']},
+  {n:24,hanzi:'上步七星',pinyin:'Shàng bù qī xīng',english:'Step Forward to Seven Stars',
+   group:'f',stance:'Empty stance 虛步',dir:'West',
+   desc:'Rise from the low posture and step forward. Both fists cross at chest height — a defensive guard — as the left foot settles into empty stance (toe touching). A compact, controlled finishing posture that gathers the energy of the form inward before the closing.',
+   transition:'Rise from snake creeps down. Step left foot forward. Both hands form loose fists. Cross them at chest height. Left foot settles to toe-touch.',
+   into:'Step right foot back. Open hands downward. Feet come together. Arms float down to sides — closing form (收勢). Return to wu ji.',
+   principles:['中正','虛實','意','無極']},
+];
+
+// ── TERMINOLOGY LOGIC ──
+const CAT_LABELS = {movement:'Movement name',principle:'Body principle',energy:'Energy & intent',training:'Training',concept:'Core concept'};
+let activeFilter = 'all', openTermId = null;
+
+function setFilter(f,btn) {
+  activeFilter = f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); openTermId = null; renderTerms();
+}
+
+function renderTerms() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const filtered = TERMS.filter(t => {
+    const cm = activeFilter==='all' || t.category===activeFilter;
+    if (!cm) return false;
+    if (!q) return true;
+    return t.hanzi.includes(q)||t.pinyin.toLowerCase().includes(q)||t.english.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q);
+  });
+  document.getElementById('rbar').textContent = filtered.length===TERMS.length ? `${TERMS.length} terms` : `${filtered.length} of ${TERMS.length} terms`;
+  const grid = document.getElementById('tgrid');
+  if (!filtered.length) { grid.innerHTML='<div class="empty"><span class="char">？</span>No matching terms found.</div>'; return; }
+  grid.innerHTML = filtered.map(t => {
+    const isOpen = openTermId===t.hanzi;
+    const sid = 'tc'+t.hanzi.split('').map(c=>c.codePointAt(0).toString(16)).join('');
+    const rh = (t.related||[]).length ? `<div class="related"><h3>Related terms</h3><div class="rlist">${t.related.map(r=>`<span class="rchip" onclick="event.stopPropagation();jumpToTerm('${r}')">${r}</span>`).join('')}</div></div>` : '';
+    return `<div class="card ${isOpen?'open':''}" id="${sid}" onclick="toggleTerm('${t.hanzi}')">
+      <div class="card-head"><div class="card-titles">
+        <div class="hanzi">${t.hanzi}</div><div class="pinyin">${t.pinyin}</div>
+        <div class="english">${t.english}</div>
+        <span class="tag tag-${t.category}">${CAT_LABELS[t.category]}</span>
+      </div>
+      <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"/></svg></div>
+      <div class="details">
+        <div class="ds"><h3>Meaning &amp; practice</h3><p>${t.desc}</p><p style="margin-top:.75rem;font-size:12px;color:var(--ink3)">${t.etymology}</p></div>
+        <div class="ds"><h3>Memory hook</h3><div class="mhook">${t.hook}</div>${rh}</div>
+      </div></div>`;
+  }).join('');
+}
+
+function toggleTerm(h) {
+  openTermId = openTermId===h ? null : h; renderTerms();
+  if (openTermId) { const sid='tc'+h.split('').map(c=>c.codePointAt(0).toString(16)).join(''); setTimeout(()=>document.getElementById(sid)?.scrollIntoView({behavior:'smooth',block:'nearest'}),50); }
+}
+
+function jumpToTerm(h) {
+  activeFilter='all';
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.fbtn').classList.add('active');
+  document.getElementById('search').value='';
+  openTermId=h; renderTerms();
+  const sid='tc'+h.split('').map(c=>c.codePointAt(0).toString(16)).join('');
+  setTimeout(()=>document.getElementById(sid)?.scrollIntoView({behavior:'smooth',block:'center'}),60);
+}
+
+// ── 24-FORM LOGIC ──
+let formMode = 'sequence', openSeqN = null, studyIdx = 0, studyRevealed = false, studySeen = new Set();
+
+function setMode(mode,btn) {
+  formMode=mode;
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  document.getElementById('view-sequence').style.display = mode==='sequence'?'':'none';
+  document.getElementById('view-grid').style.display = mode==='grid'?'':'none';
+  document.getElementById('view-study').style.display = mode==='study'?'':'none';
+  if (mode==='sequence') renderSequence();
+  if (mode==='grid') renderGrid();
+  if (mode==='study') renderStudy();
+}
+
+function renderSequence() {
+  let html='', lastG=null;
+  FORM24.forEach(m => {
+    if (m.group!==lastG) { lastG=m.group; html+=`<div class="sdiv"><span>Group ${m.group.toUpperCase()} · ${GROUPS[m.group]}</span></div>`; }
+    const isOpen = openSeqN===m.n;
+    const ph = (m.principles||[]).map(p=>`<span class="tlink" onclick="event.stopPropagation();goToTerm('${p}')">${p}</span>`).join('');
+    const prevName = m.n>1 ? FORM24[m.n-2].english : '—';
+    const nextName = m.n<24 ? FORM24[m.n].english : 'Closing form 收勢';
+    html+=`<div class="sq-item ${isOpen?'cur':''}">
+      <div class="sq-nc"><div class="sq-n">${m.n}</div></div>
+      <div class="sq-c ${isOpen?'open':''}" id="sq${m.n}" onclick="toggleSeq(${m.n})">
+        <div class="sq-top">
+          <div>
+            <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+              <span class="sq-hz">${m.hanzi}</span><span class="sq-py">${m.pinyin}</span>
+            </div>
+            <div class="sq-en">${m.english}</div>
+          </div>
+          <svg class="sq-chv" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"/></svg>
+        </div>
+        <div class="sq-tags">
+          <span class="sq-tag st-stance">${m.stance}</span>
+          <span class="sq-tag st-dir">→ ${m.dir}</span>
+          <span class="sq-tag st-grp">Group ${m.group.toUpperCase()}</span>
+        </div>
+        <div class="sq-det">
+          <div class="sdb"><h4>The movement</h4><p>${m.desc}</p></div>
+          <div class="sdb">
+            <div class="tbox"><strong>Arriving from: ${prevName}</strong>${m.transition}</div>
+            <div class="tbox" style="margin-top:8px"><strong>Leading into: ${nextName}</strong>${m.into}</div>
+            ${ph ? `<div style="margin-top:10px"><h4 style="font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px">Key principles</h4><div class="tlinks">${ph}</div></div>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('seq-list').innerHTML = html;
+}
+
+function toggleSeq(n) {
+  openSeqN = openSeqN===n ? null : n; renderSequence();
+  if (openSeqN) setTimeout(()=>document.getElementById('sq'+n)?.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+}
+
+function renderGrid() {
+  document.getElementById('fgrid').innerHTML = FORM24.map(m=>`
+    <div class="gi g${m.group}" onclick="openSeqFromGrid(${m.n})">
+      <div class="gi-num">${m.n}</div>
+      <div class="gi-hz">${m.hanzi}</div>
+      <div class="gi-en">${m.english}</div>
+      <div class="gi-st">${m.stance.split(' ')[0]}</div>
+    </div>`).join('');
+}
+
+function openSeqFromGrid(n) {
+  openSeqN=n; setMode('sequence',document.getElementById('btn-seq'));
+  setTimeout(()=>document.getElementById('sq'+n)?.scrollIntoView({behavior:'smooth',block:'center'}),100);
+}
+
+function renderStudy() {
+  const m = FORM24[studyIdx]; studySeen.add(studyIdx);
+  document.getElementById('sdots').innerHTML = FORM24.map((_,i)=>
+    `<div class="sdot ${i===studyIdx?'cur':studySeen.has(i)?'seen':''}" onclick="goStudy(${i})"></div>`).join('');
+  const rev = studyRevealed ? `<div class="s-rev">
+    <div class="s-row"><em>Stance</em>${m.stance}</div>
+    <div class="s-row"><em>Direction</em>${m.dir}</div>
+    <div class="s-row" style="font-size:12px;color:var(--ink3);max-width:320px;line-height:1.55;text-align:center">${m.desc.split('.')[0]}.</div>
+  </div>` : '';
+  document.getElementById('scard').innerHTML = `
+    <div class="s-num">Movement ${m.n} of 24 · Group ${m.group.toUpperCase()}</div>
+    <div class="s-hz">${m.hanzi}</div>
+    <div class="s-py">${m.pinyin}</div>
+    <div class="s-en">${m.english}</div>${rev}`;
+  document.getElementById('snav').innerHTML = `
+    <button class="sbtn" onclick="goStudy(${Math.max(0,studyIdx-1)})" ${studyIdx===0?'disabled':''}>← Back</button>
+    ${!studyRevealed
+      ? `<button class="sbtn pr" onclick="studyReveal()">Show details</button>`
+      : `<button class="sbtn pr" onclick="goStudy(${(studyIdx+1)%24})">Next →</button>`}
+    <button class="sbtn" onclick="studyShuffle()">Shuffle</button>`;
+}
+
+function studyReveal() { studyRevealed=true; renderStudy(); }
+function goStudy(i) { studyIdx=i; studyRevealed=false; renderStudy(); }
+function studyShuffle() { studyIdx=Math.floor(Math.random()*24); studyRevealed=false; renderStudy(); }
+
+function goToTerm(h) {
+  switchPanel('terms', document.getElementById('tab-terms'));
+  jumpToTerm(h);
+}
+
+function switchPanel(id,btn) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.top-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active'); btn.classList.add('active');
+}
+
+// ── VIDEO LINKS ──
+const VID_LINKS = [
+  { url:  'https://www.youtube.com/results?search_query=tai+chi+24+form+yang+style+full+demonstration',
+    title: 'Full form — demonstration',
+    sub:   'Watch the complete 24-form performed at a steady pace — good for memorising the overall flow',
+    tags:  ['Full form', 'Front view'] },
+  { url:  'https://www.youtube.com/results?search_query=tai+chi+24+form+back+view+follow+along',
+    title: 'Back view — follow along',
+    sub:   'Mirror-angle so you can move with the teacher without reversing left and right in your head',
+    tags:  ['Back view', 'Follow-along'] },
+  { url:  'https://www.youtube.com/results?search_query=tai+chi+24+form+step+by+step+tutorial+beginners',
+    title: 'Step-by-step instruction',
+    sub:   'Movement-by-movement breakdown with verbal cues — helpful when learning a new section',
+    tags:  ['Instructional', 'English cues'] },
+];
+
+function renderVideoLinks() {
+  const icon = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V9M9 1h6m0 0v6m0-6L7 9"/></svg>`;
+  document.getElementById('vid-links').innerHTML = VID_LINKS.map(v => `
+    <a href="${v.url}" target="_blank" rel="noopener" class="vid-link">
+      <div class="vid-link-icon">${icon}</div>
+      <div class="vid-link-body">
+        <div class="vid-link-title">${v.title}</div>
+        <div class="vid-link-sub">${v.sub}</div>
+        <div class="vid-link-tags">${v.tags.map(t=>`<span class="vid-tag">${t}</span>`).join('')}</div>
+      </div>
+    </a>`).join('');
+}
+
+renderVideoLinks();
+renderTerms(); renderSequence(); renderGrid();
+</script>
+</body>
+</html>
